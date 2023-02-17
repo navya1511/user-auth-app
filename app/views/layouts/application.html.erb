@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UserAuthApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <ul>
+  <% if session[:user] %>
+    <li class="nav-item" , style="float:left;">
+      <%= link_to "Home" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Sign Out', account_logout_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Reset Password', password_reset_password_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Edit Profile', profile_edit_profile_path, class: 'nav-link' %>
+    </li>
+ <% else %>
+
+ 
+<li class="nav-item">
+     <%= link_to 'Login In', account_login_path , class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Sign Up', account_signup_path, class: 'nav-link' %>
+     </li> 
+<% end %>  
+</ul>
+   <main>
+  <div class="container">
+    
+    <div class="cover">
+      <div class="front">
+        <img src="/assets/frontImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+        </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          
+        
+        <div class="signup-form">
+            <div class="input-boxes">
+              <%= yield %>
+              
+            </div>
+      </div>
+      </div>
+   </div>
+    
+  </div>
+  </div>
+ </main>
+  </body>
+</html>

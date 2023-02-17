@@ -1,0 +1,24 @@
+<%= flash[:notice] %>
+<div class="title">
+          Login
+ </div>
+<%= form_with model: @user , url: "/account/login" , method: :post do |f|%>
+<div class="input-box">
+<i class="fas fa-envelope"></i>
+   <%# <%= f.label 'Email' %>
+    <%= f.text_field :email , placeholder: "Enter Your Email"%>
+</div>
+<div class="input-box">
+<i class="fas fa-lock"></i>
+   <%# <%= f.label 'Password' %>
+    <%= f.password_field :password , placeholder: "Enter Your password" %>
+</div>
+<div class="text">
+<%= link_to "Forgot Password?" , password_forgot_password_path %>
+</div>
+<div class="button input-box">
+   <%= f.submit 'Login' %>
+</div>
+<% end %>
+
+<div class="text sign-up-text">Don't have an account?<%= link_to "Sign up" , account_signup_path  %></div>

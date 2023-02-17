@@ -1,0 +1,44 @@
+
+<%= flash[:notice]%>
+<div class="title">
+         Edit Profile
+ </div>
+<%= form_with  url: "/profile/edit_profile" , method: :post do |f|%>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@user.errors.count, "error") %> prohibited this
+user from being saved:</h2>
+  <ul>
+  <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="input-box">
+<i class="fa fa-user"></i>
+   <%# <%= f.label 'First Name' %>
+    <%= f.text_field :first_name  , placeholder: "Enter Your First Name"%>
+</div>
+<div class="input-box" >
+   <%# <%= f.label 'Last Name' %>
+   <i class="fa fa-user"></i>
+    <%= f.text_field :last_name , placeholder: "Enter Your Last Name" %>
+</div>
+<div class="input-box">
+<i class="fas fa-phone"></i>
+   <%# <%= f.label 'Mobile No.' %>
+    <%= f.number_field :phone , placeholder: "Enter Your Mobile No."  %>
+</div>
+<div class="input-box">
+<i class="fas fa-calendar-days"></i>
+   <%# <%= f.label 'Date of Birth' %>
+    <%= f.date_field :date_of_birth  %>
+</div>
+<div class="input-box">
+   <%= f.file_field :profile_picture %>
+ </div>
+<div class="button input-box">
+   <%= f.submit 'Edit Profile' %>
+</div>
+<% end %>
